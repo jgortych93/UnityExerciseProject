@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 67919924}
   - component: {fileID: 67919925}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1700
+  isBallInInitialPosition: 1
 --- !u!1 &332017468
 GameObject:
   m_ObjectHideFlags: 0

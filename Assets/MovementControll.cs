@@ -15,6 +15,8 @@ public class MovementControll : MonoBehaviour
 
     private const float LOCAL_SPACE_MID_BOUNDARY = 0.15f;
 
+    private Rigidbody2D rigidbody2d;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,9 @@ public class MovementControll : MonoBehaviour
         objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x; //extents = size of width / 2
 
         ballScript = GameObject.Find("Ball").GetComponent<BallScript>();
+
+        rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
+        rigidbody2d.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
     }
 
     // Update is called once per frame

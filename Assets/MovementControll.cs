@@ -13,6 +13,8 @@ public class MovementControll : MonoBehaviour
 
     private BallScript ballScript;
 
+    private const float LOCAL_SPACE_MID_BOUNDARY = 0.15f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +50,17 @@ public class MovementControll : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        var direction = transform.InverseTransformPoint(collision.transform.position);
+        Debug.Log("HIT. Contact point: " + direction);
 
-        Debug.Log("HIT");
+        if(direction.x > LOCAL_SPACE_MID_BOUNDARY)
+        {
+            ballScript.BounceBallRight();
+        }
+        else if(direction.x < (-1 * LOCAL_SPACE_MID_BOUNDARY))
+        {
+            ballScript.BounceBallLeft();
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

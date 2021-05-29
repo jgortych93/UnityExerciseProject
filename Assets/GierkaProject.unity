@@ -258,6 +258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1700
+  leftBounceDegAngle: 170
+  rightBounceDegAngle: 10
+  bounceForce: 500
   isBallInInitialPosition: 1
 --- !u!1 &124241839
 GameObject:

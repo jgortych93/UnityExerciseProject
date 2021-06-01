@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementControll : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 1.0f;
     public bool isCursorVisible = false;
+
+    public static uint health = 3;
 
     public Camera MainCamera;
     private Vector2 screenBounds;

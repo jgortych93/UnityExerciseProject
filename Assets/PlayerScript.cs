@@ -7,8 +7,6 @@ public class PlayerScript : MonoBehaviour
     public float speed = 1.0f;
     public bool isCursorVisible = false;
 
-    public static uint health = 3;
-
     public Camera MainCamera;
     private Vector2 screenBounds;
     private float objectWidth;

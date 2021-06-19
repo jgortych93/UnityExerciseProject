@@ -9,11 +9,16 @@ public class BallScript : MonoBehaviour
     public float rightBounceDegAngle = 10f;
     public int bounceForce = 500;
     public bool isBallInInitialPosition = true;
+    public Camera MainCamera;
+
+    private Vector2 screenBounds;
 
     private Rigidbody2D rigidbody2d;
 
     private readonly float leftBounceRadAngle;
     private readonly float rightBounceRadAngle;
+
+    private HealthScript healthScript;
 
     private BallScript()
     {
@@ -43,6 +48,10 @@ public class BallScript : MonoBehaviour
     {
         rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
         rigidbody2d.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+
+        screenBounds = MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, MainCamera.transform.position.z));
+
+        healthScript = GameObject.Find("Heart 1").GetComponent<HealthScript>();
     }
 
     // Update is called once per frame
@@ -56,6 +65,13 @@ public class BallScript : MonoBehaviour
 
                 rigidbody2d.AddForce(transform.up * speed);
                 isBallInInitialPosition = false;
+            }
+        }
+        else
+        {
+            if (transform.position.y < (screenBounds.y * -1))
+            {
+                --healthScript.Health;
             }
         }
     }

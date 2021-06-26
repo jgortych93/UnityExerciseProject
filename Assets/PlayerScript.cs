@@ -17,6 +17,13 @@ public class PlayerScript : MonoBehaviour
 
     private Rigidbody2D rigidbody2d;
 
+    public void ResetToInitialPosition()
+    {
+        Vector3 position = transform.position;
+        position.x = 0;
+        transform.position = position;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +75,4 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-    }
 }

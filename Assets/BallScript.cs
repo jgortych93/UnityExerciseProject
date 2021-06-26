@@ -19,6 +19,10 @@ public class BallScript : MonoBehaviour
     private readonly float rightBounceRadAngle;
 
     private HealthScript healthScript;
+    private PlayerScript player;
+
+    private float initialX = 0;
+    private float initialY = -8.5f;
 
     private BallScript()
     {
@@ -52,6 +56,7 @@ public class BallScript : MonoBehaviour
         screenBounds = MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, MainCamera.transform.position.z));
 
         healthScript = GameObject.Find("Heart 1").GetComponent<HealthScript>();
+        player = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
@@ -72,8 +77,22 @@ public class BallScript : MonoBehaviour
             if (transform.position.y < (screenBounds.y * -1))
             {
                 --healthScript.Health;
-                //reset
+
+                this.ResetBall();
+                this.player.ResetToInitialPosition();
             }
         }
+    }
+
+    private void ResetBall()
+    {
+        //Destroy(gameObject);
+        this.isBallInInitialPosition = true;
+        Vector3 position = transform.position;
+        position.x = this.initialX;
+        position.y = this.initialY;
+        transform.position = position;
+        this.rigidbody2d.velocity = Vector2.zero;
+        this.rigidbody2d.angularVelocity = 0f;
     }
 }

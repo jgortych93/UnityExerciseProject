@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthScript : MonoBehaviour
 {   
     private uint _health;
+    public GameObject[] hearths;
 
     public uint Health
     {
@@ -23,7 +24,7 @@ public class HealthScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
+        
     }
 
     // Update is called once per frame
@@ -33,9 +34,28 @@ public class HealthScript : MonoBehaviour
     }
     private void HandleHealthChange()
     {
+        Debug.Log("Health: " + this._health);
+
         if (this._health >= 3)
         {
-
+            this.hearths[0].SetActive(true);
+            this.hearths[1].SetActive(true);
+            this.hearths[2].SetActive(true);
+        }
+        else if (this._health == 2)
+        {
+            this.hearths[0].SetActive(false);
+            this.hearths[1].SetActive(true);
+            this.hearths[2].SetActive(true);
+        }
+        else if (this._health == 1)
+        {
+            this.hearths[0].SetActive(false);
+            this.hearths[1].SetActive(false);
+        }
+        else
+        {
+            //Game Over frajerze
         }
     }
 }

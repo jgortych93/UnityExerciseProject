@@ -703,6 +703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431e18c1cbfe55b4c8eeaf1d27ed1d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hearths:
+  - {fileID: 362777171}
+  - {fileID: 388699568}
+  - {fileID: 1784027820}
 --- !u!1 &388699568
 GameObject:
   m_ObjectHideFlags: 0

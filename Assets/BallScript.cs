@@ -72,6 +72,7 @@ public class BallScript : MonoBehaviour
             if (transform.position.y < (screenBounds.y * -1))
             {
                 --healthScript.Health;
+                //reset
             }
         }
     }

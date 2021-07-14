@@ -7,6 +7,8 @@ public class HealthScript : MonoBehaviour
     private uint _health;
     public GameObject[] hearths;
 
+    public GameOverScript gameOverScreen;
+
     public uint Health
     {
         get => _health;
@@ -55,7 +57,8 @@ public class HealthScript : MonoBehaviour
         }
         else
         {
-            //Game Over frajerze
+            this.hearths[2].SetActive(false);
+            gameOverScreen.Setup();
         }
     }
 }

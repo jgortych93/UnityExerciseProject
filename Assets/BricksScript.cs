@@ -5,6 +5,7 @@ using UnityEngine;
 public class BricksScript : MonoBehaviour
 {
     private Collider2D rigidbody2d;
+    private Renderer objectRenderer;
 
     private const uint disabilityTime = 4;
 
@@ -12,6 +13,7 @@ public class BricksScript : MonoBehaviour
     void Start()
     {
         this.rigidbody2d = gameObject.GetComponent<Collider2D>();
+        this.objectRenderer = gameObject.GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -27,12 +29,12 @@ public class BricksScript : MonoBehaviour
 
     private IEnumerator HandleCollision()
     {
-        gameObject.GetComponent<Renderer>().enabled = false;
+        this.objectRenderer.enabled = false;
         this.rigidbody2d.enabled = false;
 
         yield return new WaitForSeconds(disabilityTime);
 
-        gameObject.GetComponent<Renderer>().enabled = true;
+        this.objectRenderer.enabled = true;
         this.rigidbody2d.enabled = true;
     }
 }

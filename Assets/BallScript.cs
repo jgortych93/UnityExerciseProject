@@ -8,7 +8,7 @@ public class BallScript : MonoBehaviour
     public float leftBounceDegAngle = 170f;
     public float rightBounceDegAngle = 10f;
     public int bounceForce = 500;
-    public bool isBallInInitialPosition = true;
+    public static bool isBallInInitialPosition = true;
     public Camera MainCamera;
 
     private Vector2 screenBounds;
@@ -86,8 +86,7 @@ public class BallScript : MonoBehaviour
 
     private void ResetBall()
     {
-        //Destroy(gameObject);
-        this.isBallInInitialPosition = true;
+        isBallInInitialPosition = true;
         Vector3 position = transform.position;
         position.x = this.initialX;
         position.y = this.initialY;

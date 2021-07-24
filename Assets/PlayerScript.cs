@@ -42,7 +42,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!ballScript.isBallInInitialPosition)
+        if(!BallScript.isBallInInitialPosition)
         {
             Vector3 position = transform.position;
             float translation = Input.GetAxis("Mouse X") * speed;

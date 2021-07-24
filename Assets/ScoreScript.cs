@@ -7,7 +7,7 @@ public class ScoreScript : MonoBehaviour
 {
     private static TextMeshProUGUI textMeshPro;
 
-    private static uint _score;
+    private static uint _score = 0;
 
     public static uint Score
     {

@@ -14,6 +14,7 @@ public class GameOverScript : MonoBehaviour
 
     public void RestartGame()
     {
+        ScoreScript.Score = 0;
         Time.timeScale = 1;
         SceneManager.LoadScene("GierkaProject");
     }

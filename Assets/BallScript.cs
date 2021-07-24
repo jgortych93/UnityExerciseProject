@@ -86,6 +86,7 @@ public class BallScript : MonoBehaviour
 
     private void ResetBall()
     {
+        rigidbody2d.constraints = RigidbodyConstraints2D.FreezePosition;
         isBallInInitialPosition = true;
         Vector3 position = transform.position;
         position.x = this.initialX;

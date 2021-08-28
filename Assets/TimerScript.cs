@@ -5,18 +5,37 @@ using UnityEngine;
 
 public class TimerScript : MonoBehaviour
 {
+    public static readonly float MAX_SECONDS = 59f;
+    public static readonly float INITIAL_MINUTES = 5f;
+
     public GameOverScript gameOverScript;
 
     private TextMeshProUGUI textMeshPro;
 
-    private float seconds = 59f;    
-    private float minutes = 4f;
+    private float _seconds = 0f;    
+    private float _minutes = INITIAL_MINUTES;
+
+    public float Seconds
+    {
+        get => _seconds;
+        private set {
+            _seconds = value;
+        }
+    }
+
+    public float Minutes
+    {
+        get => _minutes;
+        private set {
+            _minutes = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         this.textMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
-        textMeshPro.SetText("TIME: " + (minutes+1f).ToString("00.") + ":00");
+        textMeshPro.SetText("TIME: " + this._minutes.ToString("00.") + ":00");
     }
 
     // Update is called once per frame
@@ -24,16 +43,16 @@ public class TimerScript : MonoBehaviour
     {
         if(!BallScript.isBallInInitialPosition)
         {
-            this.seconds -= Time.deltaTime;
-            if (this.seconds < 0)
+            this._seconds -= Time.deltaTime;
+            if (this._seconds < 0)
             {
-                this.seconds = 59;
-                --this.minutes;
+                this._seconds = MAX_SECONDS;
+                --this._minutes;
             }
 
-            this.UpdateTimer(this.minutes, this.seconds);
+            this.UpdateTimer(this._minutes, this._seconds);
 
-            if (this.minutes < 0)
+            if (this._minutes < 0)
             {
                 gameOverScript.Setup();
             }
@@ -42,6 +61,6 @@ public class TimerScript : MonoBehaviour
     
     private void UpdateTimer(float minutes, float seconds)
     {
-        textMeshPro.SetText("TIME: " + minutes.ToString("00.") + ":" + seconds.ToString("00."));
+        textMeshPro.SetText("TIME: " + _minutes.ToString("00.") + ":" + _seconds.ToString("00."));
     }
 }

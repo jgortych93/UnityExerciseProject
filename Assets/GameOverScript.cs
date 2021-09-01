@@ -9,6 +9,8 @@ public class GameOverScript : MonoBehaviour
 
     public TextMeshProUGUI bestScoreText;
     public TimerScript timer;
+    public AudioSource fanfars;
+    public AudioSource looserTheme;
 
     private static uint bestScore = 0;
     private static float bestScoreSeconds;
@@ -22,6 +24,8 @@ public class GameOverScript : MonoBehaviour
 
         if (ScoreScript.Score > bestScore)
         {
+            this.fanfars.Play();
+
             bestScore = ScoreScript.Score;
             if ((uint)timer.Seconds != 0)
             {
@@ -32,6 +36,10 @@ public class GameOverScript : MonoBehaviour
                 bestScoreSeconds = 0f;
             }
             bestScoreMinutes = (TimerScript.INITIAL_MINUTES-1) - timer.Minutes;
+        }
+        else
+        {
+            this.looserTheme.Play();
         }
 
         bestScoreText.SetText("BEST SCORE: " + bestScore + "  IN TIME: " + bestScoreMinutes.ToString("00.") + ":" + bestScoreSeconds.ToString("00."));

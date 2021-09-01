@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BricksScript : MonoBehaviour
 {
+    public AudioSource hitSound;
+
     private Collider2D rigidbody2d;
     private Renderer objectRenderer;
 
@@ -24,6 +26,7 @@ public class BricksScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        hitSound.Play();
         ++ScoreScript.Score;
         StartCoroutine("HandleCollision");
     }

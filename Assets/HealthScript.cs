@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class HealthScript : MonoBehaviour
 {   
-    private uint _health;
     public GameObject[] hearths;
 
     public GameOverScript gameOverScreen;
+    public AudioSource looseHealthAudioSource;
+
+    private uint _health;
 
     public uint Health
     {
@@ -26,7 +28,7 @@ public class HealthScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -46,12 +48,14 @@ public class HealthScript : MonoBehaviour
         }
         else if (this._health == 2)
         {
+            this.looseHealthAudioSource.Play();
             this.hearths[0].SetActive(false);
             this.hearths[1].SetActive(true);
             this.hearths[2].SetActive(true);
         }
         else if (this._health == 1)
         {
+            this.looseHealthAudioSource.Play();
             this.hearths[0].SetActive(false);
             this.hearths[1].SetActive(false);
         }
